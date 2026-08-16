@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "solar-system",
+=======
+  "name": "my-solar-system",
+>>>>>>> d7c1d954ed23c4008e4fd8737d8c418ca4a126b8
   "private": true,
   "version": "0.0.0",
   "type": "module",
