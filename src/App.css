@@ -1,12 +1,25 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 .solar-system {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #05070d;
-  border-radius: 12px;
-  padding: 1.5rem;
   color: #e8e8e8;
   font-family: sans-serif;
+  padding: 1.5rem;
+  box-sizing: border-box;
 }
 
 .controls {
@@ -43,6 +56,8 @@
 }
 
 .canvas {
+  flex: 1;
+  width: 100%;
   background: radial-gradient(circle, #0a0e1a 0%, #05070d 80%);
   border-radius: 8px;
 }
@@ -57,6 +72,88 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
+}
+
+/* shared base for all per-planet info buttons */
+.button_info {
+  color: #eafbea;
+  border: 1px solid #294683;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.button_info:active {
+  transform: translateY(0);
+}
+
+/* per-planet colors only — hover/transition inherited from .button_info */
+.button_info-earth {
+  background: #1a3f6e;
+}
+.button_info-earth:hover {
+  background: #3a7245;
+  transform: translateY(-1px);
+}
+
+.button_info-mars {
+  background: #ac1111;
+}
+.button_info-mars:hover {
+  background: #b18b0e;
+  transform: translateY(-1px);
+}
+
+.button_info-mercury {
+  background: #d5d2d1;
+}
+.button_info-mercury:hover {
+  background: #81a3e8;
+  transform: translateY(-1px);
+}
+
+.button_info-venus {
+  background: #e3bb76;
+}
+.button_info-venus:hover {
+  background: #f8e2b0;
+  transform: translateY(-1px);
+}
+
+.button_info-jupiter {
+  background: #c8cce7;
+}
+.button_info-jupiter:hover {
+  background: #e1e1e2;
+  transform: translateY(-1px);
+}
+
+.button_info-saturn {
+  background: #7b7869;
+}
+.button_info-saturn:hover {
+  background: #343e47;
+  transform: translateY(-1px);
+}
+
+.button_info-uranus {
+  background: #b2d6db;
+}
+.button_info-uranus:hover {
+  background: #343e47;
+  transform: translateY(-1px);
+}
+
+.button_info-neptune {
+  background: #7cb7bb;
+}
+.button_info-neptune:hover {
+  background: #343e47;
+  transform: translateY(-1px);
 }
 
 .caption {

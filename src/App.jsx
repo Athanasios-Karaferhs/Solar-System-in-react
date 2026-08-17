@@ -96,12 +96,19 @@ export default function SolarSystem() {
           <span className="speed-value">{speed.toFixed(1)}x</span>
         </label>
       </div>
-
+      {/* info about the planets */}
+      {selected !== null && (
+        <button
+          className={`button_info button_info-${selected?.toLowerCase()}`}
+          onClick={() => display_info_for_earth(selected)}
+        >
+          <p>info for {selected}</p>
+        </button>
+      )}
       <svg
-        width={view}
-        height={view}
         viewBox={`0 0 ${view} ${view}`}
         className="canvas"
+        preserveAspectRatio="xMidYMid meet"
       >
         {/* background stars */}
         {Array.from({ length: 120 }).map((_, i) => {
@@ -177,14 +184,6 @@ export default function SolarSystem() {
           );
         })}
       </svg>
-
-      {selectedPlanet && (
-        <div className="info-panel">
-          <p>hello world</p>
-          <p>{selectedPlanet.name}</p>
-        </div>
-      )}
-
       <p className="caption">
         distances and sizes are adjusted for visibility. Click a planet for its
         name and year length.
@@ -192,3 +191,5 @@ export default function SolarSystem() {
     </div>
   );
 }
+
+function display_info(selected) {}
