@@ -3,13 +3,54 @@ import { useRef, useMemo, Suspense } from "react";
 import * as THREE from "three";
 import "./App.css";
 
-function CustomEarth() {
+// Database of planet textures & information(the information is testing)
+const PLANET_DATA = {
+  Earth: {
+    texture: "/assets/textures/earth_atmos_2048.jpg",
+    period: "365 days",
+    distance: "1 AU",
+  },
+  Mars: {
+    texture: "/assets/textures/2k_mars.jpg",
+    period: "687 days",
+    distance: "1.52 AU",
+  },
+  Mercury: {
+    texture: "/assets/textures/2k_mercury.jpg",
+    period: "88 days",
+    distance: "0.39 AU",
+  },
+  Venus: {
+    texture: "/assets/textures/2k_venus_surface.jpg",
+    period: "225 days",
+    distance: "0.72 AU",
+  },
+  Jupiter: {
+    texture: "/assets/textures/2k_jupiter.jpg",
+    period: "4,333 days",
+    distance: "5.20 AU",
+  },
+  Saturn: {
+    texture: "/assets/textures/2k_saturn.jpg",
+    period: "10,759 days",
+    distance: "9.58 AU",
+  },
+  Uranus: {
+    texture: "/assets/textures/2k_uranus.jpg",
+    period: "30,687 days",
+    distance: "19.22 AU",
+  },
+  Neptune: {
+    texture: "/assets/textures/2k_neptune.jpg",
+    period: "60,190 days",
+    distance: "30.05 AU",
+  },
+};
+
+function CustomPlanet({ texturePath }) {
   const meshRef = useRef();
   // Loading external assets
-  const texture = useLoader(
-    THREE.TextureLoader,
-    "https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_atmos_2048.jpg",
-  );
+  const texture = useLoader(THREE.TextureLoader, texturePath);
 
   // Executes on each frame render
   useFrame(() => {
@@ -31,7 +72,7 @@ function CustomEarth() {
 function CustomStars({ count = 2000 }) {
   const points = useRef();
 
-  //random positions for thousands of star particles
+  // positions for star particles
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count * 3; i += 3) {
@@ -58,7 +99,10 @@ function CustomStars({ count = 2000 }) {
   );
 }
 
-export function EarthDetailView({ onClose }) {
+export function EarthDetailView({ planetName = "Earth", onClose }) {
+  // Get info for the requested planet (Earth if not found)
+  const info = PLANET_DATA[planetName] || PLANET_DATA.Earth;
+
   return (
     <div className="detail-view">
       <div className="detail-left">
@@ -73,15 +117,18 @@ export function EarthDetailView({ onClose }) {
           <CustomStars count={3000} />
 
           <Suspense fallback={null}>
-            <CustomEarth />
+            <CustomPlanet texturePath={info.texture} />
           </Suspense>
         </Canvas>
       </div>
       <div className="detail-right">
-        <h1>Earth</h1>
-        <p>Orbital period: 365 days</p>
-        <p>Distance from Sun: 1 AU</p>
-        <button className="button" onClick={onClose}>
+        <h1>{planetName}</h1>
+        <p>Orbital period: {info.period}</p>
+        <p>Distance from Sun: {info.distance}</p>
+        <button
+          className={`button_info-${planetName?.toLowerCase()}`}
+          onClick={onClose}
+        >
           Back
         </button>
       </div>

@@ -52,9 +52,10 @@ export default function SolarSystem() {
   );
   const [detailPlanet, setDetailPlanet] = useState(null); // e.g. "Earth" or null
 
-  function display_info_for_earth() {
-    setDetailPlanet("Earth");
+  function handle_open_planet(selectedPlanetName) {
+    setDetailPlanet(selectedPlanetName);
   }
+
   const rafRef = useRef(null);
   const lastRef = useRef(null);
 
@@ -82,9 +83,16 @@ export default function SolarSystem() {
 
   // look up the full planet object for whatever name is currently selected
   const selectedPlanet = PLANETS.find((p) => p.name === selected) || null;
-  if (detailPlanet === "Earth") {
-    return <EarthDetailView onClose={() => setDetailPlanet(null)} />;
+
+  if (detailPlanet) {
+    return (
+      <EarthDetailView
+        planetName={detailPlanet}
+        onClose={() => setDetailPlanet(null)}
+      />
+    );
   }
+
   return (
     <div className="solar-system">
       <div className="controls">
@@ -108,7 +116,7 @@ export default function SolarSystem() {
       {selected !== null && (
         <button
           className={`button_info button_info-${selected?.toLowerCase()}`}
-          onClick={() => display_info_for_earth(selected)}
+          onClick={() => handle_open_planet(selected)}
         >
           <p>info for {selected}</p>
         </button>
