@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
+import { EarthDetailView } from "./PlanetViewer.jsx";
 
 const PLANETS = [
   { name: "Mercury", color: "#b1adad", radius: 4, distance: 60, period: 88 },
@@ -49,6 +50,11 @@ export default function SolarSystem() {
   const [angles, setAngles] = useState(() =>
     PLANETS.map(() => Math.random() * Math.PI * 2),
   );
+  const [detailPlanet, setDetailPlanet] = useState(null); // e.g. "Earth" or null
+
+  function display_info_for_earth() {
+    setDetailPlanet("Earth");
+  }
   const rafRef = useRef(null);
   const lastRef = useRef(null);
 
@@ -76,7 +82,9 @@ export default function SolarSystem() {
 
   // look up the full planet object for whatever name is currently selected
   const selectedPlanet = PLANETS.find((p) => p.name === selected) || null;
-
+  if (detailPlanet === "Earth") {
+    return <EarthDetailView onClose={() => setDetailPlanet(null)} />;
+  }
   return (
     <div className="solar-system">
       <div className="controls">
@@ -191,5 +199,3 @@ export default function SolarSystem() {
     </div>
   );
 }
-
-function display_info(selected) {}

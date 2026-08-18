@@ -162,3 +162,26 @@ body,
   margin-top: 10px;
   text-align: center;
 }
+
+.detail-view {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.detail-left {
+  width: 50%;
+  height: 100%;
+}
+
+.detail-right {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  box-sizing: border-box;
+  background: #05070d;
+  color: #e8e8e8;
+}
