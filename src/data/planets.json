@@ -1,0 +1,146 @@
+{
+  "Mercury": {
+    "texture": "/assets/textures/2k_mercury.jpg",
+    "intro": "Mercury is the closest planet to the Sun and the smallest in the solar system. It completes an orbit every 88 days, faster than any other planet, which is why the Romans named it after their swift messenger god.",
+    "sections": [
+      {
+        "heading": "Surface",
+        "text": "Mercury's surface looks a lot like Earth's Moon — it's covered in craters from billions of years of impacts, with almost nothing to erode them away since the planet has essentially no atmosphere."
+      },
+      {
+        "heading": "Climate",
+        "text": "Because it has no real atmosphere to trap heat, Mercury has the most extreme temperature swings of any planet: over 430°C during the day and down to -180°C at night."
+      },
+      {
+        "heading": "Moons",
+        "text": "Mercury has no moons at all."
+      }
+    ]
+  },
+  "Venus": {
+    "texture": "/assets/textures/2k_venus_surface.jpg",
+    "intro": "Venus is the second planet from the Sun and Earth's closest neighbor in size, which is why it's sometimes called Earth's 'sister planet'. Beneath its thick clouds, though, it's a hostile world.",
+    "sections": [
+      {
+        "heading": "Atmosphere",
+        "text": "Venus has a crushing, toxic atmosphere made mostly of carbon dioxide, with clouds of sulfuric acid. A runaway greenhouse effect makes it the hottest planet in the solar system, even hotter than Mercury."
+      },
+      {
+        "heading": "Rotation",
+        "text": "Venus rotates backwards compared to most planets, and does so incredibly slowly — a single day on Venus is longer than its entire year."
+      },
+      {
+        "heading": "Moons",
+        "text": "Venus has no moons."
+      }
+    ]
+  },
+  "Earth": {
+    "texture": "/assets/textures/earth_atmos_2048.jpg",
+    "intro": "Earth is the third planet from the Sun and, as far as we know, the only place in the universe confirmed to support life. It's home to vast oceans, a breathable atmosphere, and a huge diversity of ecosystems.",
+    "sections": [
+      {
+        "heading": "Water and Atmosphere",
+        "text": "About 71% of Earth's surface is covered by oceans. Its atmosphere is a mix of nitrogen and oxygen, shielding the surface from harmful solar radiation while supporting life."
+      },
+      {
+        "heading": "A Protective Magnetic Field",
+        "text": "Earth's molten core generates a magnetic field that deflects most solar wind and radiation, helping keep the atmosphere intact over billions of years."
+      },
+      {
+        "heading": "Moon",
+        "text": "Earth has one moon, simply called 'the Moon,' which stabilizes the planet's tilt and drives ocean tides."
+      }
+    ]
+  },
+  "Mars": {
+    "texture": "/assets/textures/2k_mars.jpg",
+    "intro": "Mars, the fourth planet from the Sun, is known as the 'Red Planet' because of the iron oxide (rust) that covers its surface. It's the most explored planet besides Earth, and a leading candidate for future human missions.",
+    "sections": [
+      {
+        "heading": "Surface Features",
+        "text": "Mars is home to Olympus Mons, the largest volcano in the solar system, and Valles Marineris, a canyon system that dwarfs the Grand Canyon."
+      },
+      {
+        "heading": "Past Water",
+        "text": "Evidence suggests Mars once had liquid water on its surface, including river valleys and lakebeds, though it's now dry and freezing."
+      },
+      {
+        "heading": "Moons",
+        "text": "Mars has two small, irregularly shaped moons, Phobos and Deimos, thought to be captured asteroids."
+      }
+    ]
+  },
+  "Jupiter": {
+    "texture": "/assets/textures/2k_jupiter.jpg",
+    "intro": "Jupiter is the largest planet in the solar system by far — a gas giant so massive that all the other planets could fit inside it combined. It has been observed since ancient times and named after the king of the Roman gods.",
+    "sections": [
+      {
+        "heading": "The Great Red Spot",
+        "text": "Jupiter's most famous feature is the Great Red Spot, a giant storm larger than Earth that has been raging for at least 350 years."
+      },
+      {
+        "heading": "Composition",
+        "text": "Jupiter is made almost entirely of hydrogen and helium, with no solid surface to land on — just deeper and deeper layers of gas and eventually liquid metallic hydrogen."
+      },
+      {
+        "heading": "Moons",
+        "text": "Jupiter has 95 known moons, including the four large 'Galilean moons' — Io, Europa, Ganymede, and Callisto — discovered by Galileo in 1610."
+      }
+    ]
+  },
+  "Saturn": {
+    "texture": "/assets/textures/2k_saturn.jpg",
+    "intro": "Saturn is the second-largest planet in the solar system, instantly recognizable for its spectacular ring system. Like Jupiter, it's a gas giant with no solid surface.",
+    "sections": [
+      {
+        "heading": "The Rings",
+        "text": "Saturn's rings are made almost entirely of countless chunks of ice, with a small amount of rocky debris. Despite spanning thousands of kilometers, they're remarkably thin — often less than a kilometer thick."
+      },
+      {
+        "heading": "Density",
+        "text": "Saturn is the least dense planet in the solar system — it's actually less dense than water, meaning it would theoretically float if you could find a bathtub big enough."
+      },
+      {
+        "heading": "Moons",
+        "text": "Saturn has 146 known moons, including Titan, the second-largest moon in the solar system and the only moon known to have a substantial atmosphere."
+      }
+    ]
+  },
+  "Uranus": {
+    "texture": "/assets/textures/2k_uranus.jpg",
+    "intro": "Uranus is the seventh planet from the Sun, an ice giant with a pale blue-green color caused by methane in its atmosphere. It's known for one especially strange feature: the way it spins.",
+    "sections": [
+      {
+        "heading": "Sideways Rotation",
+        "text": "Unlike every other planet, Uranus rotates almost completely on its side, likely the result of a massive collision early in the solar system's history. This means its poles, not its equator, face the Sun for part of its orbit."
+      },
+      {
+        "heading": "Composition",
+        "text": "Uranus is classified as an 'ice giant' rather than a gas giant, made largely of water, ammonia, and methane ices surrounding a small rocky core."
+      },
+      {
+        "heading": "Moons",
+        "text": "Uranus has 27 known moons, most of which are named after characters from the works of Shakespeare and Alexander Pope."
+      }
+    ]
+  },
+  "Neptune": {
+    "texture": "/assets/textures/2k_neptune.jpg",
+    "intro": "Neptune is the eighth and farthest known planet from the Sun, a deep blue ice giant famous for having the most violent weather in the solar system.",
+    "sections": [
+      {
+        "heading": "Extreme Winds",
+        "text": "Neptune has the strongest sustained winds of any planet, with gusts measured at over 2,000 km/h — many times faster than the strongest hurricanes on Earth."
+      },
+      {
+        "heading": "Discovery",
+        "text": "Neptune was the first planet found through mathematical prediction rather than direct observation — astronomers calculated its position from irregularities in Uranus's orbit before ever seeing it."
+      },
+      {
+        "heading": "Moons",
+        "text": "Neptune has 14 known moons, the largest being Triton, which orbits backwards compared to Neptune's rotation and is thought to be a captured object from the Kuiper Belt."
+      }
+    ]
+  }
+}

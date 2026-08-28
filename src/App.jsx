@@ -61,7 +61,9 @@ export default function SolarSystem() {
 
   useEffect(() => {
     function tick(now) {
+      //store the timestamp
       if (lastRef.current == null) lastRef.current = now;
+      //second frame keeps motion speed consistent across devices
       const dt = (now - lastRef.current) / 1000;
       lastRef.current = now;
 
@@ -69,16 +71,16 @@ export default function SolarSystem() {
         setAngles((prev) =>
           prev.map((a, i) => {
             const p = PLANETS[i];
-            const angularSpeed = (2 * Math.PI) / p.period;
-            const daysPerSecond = speed * 20;
-            return a + angularSpeed * daysPerSecond * dt;
+            const angularSpeed = (2 * Math.PI) / p.period; // radians/day for this plane
+            const daysPerSecond = speed * 20; // slider speed to simulated days
+            return a + angularSpeed * daysPerSecond * dt; // advance angle this frame
           }),
         );
       }
-      rafRef.current = requestAnimationFrame(tick);
+      rafRef.current = requestAnimationFrame(tick); //schedule next frame
     }
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(tick); //start loop
+    return () => cancelAnimationFrame(rafRef.current); // and then stop on cleanup
   }, [running, speed]);
 
   // look up the full planet object for whatever name is currently selected
@@ -136,7 +138,7 @@ export default function SolarSystem() {
           );
         })}
 
-        {/* orbit paths */}
+        {/* orbit paths only the line*/}
         {PLANETS.map((p) => (
           <circle
             key={p.name + "-orbit"}
@@ -155,6 +157,7 @@ export default function SolarSystem() {
 
         {/* planets */}
         {PLANETS.map((p, i) => {
+          // angles[i]=rad for each planet
           const a = angles[i];
           const x = CENTER + p.distance * Math.cos(a);
           const y = CENTER + p.distance * Math.sin(a);
@@ -165,13 +168,14 @@ export default function SolarSystem() {
               className="planet-group"
               onClick={() => setSelected(isSelected ? null : p.name)}
             >
+              {/*saturns ring*/}
               {p.ring && (
                 <ellipse
                   cx={x}
                   cy={y}
                   rx={p.radius * 1.9}
                   ry={p.radius * 0.6}
-                  fill="none"
+                  fill="none" //thin band not a disk
                   stroke="#c9b27a"
                   strokeWidth={2}
                   opacity={0.8}

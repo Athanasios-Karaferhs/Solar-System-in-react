@@ -29,4 +29,4 @@ npm install
 npm run dev
 ```
 
-Visit 'localhost' using the linked generated on your terminal, or simiply by pressing O+Enter on your keyboard.
+Visit `localhost` using the linked generated on your terminal, or simiply by pressing O+Enter on your keyboard.

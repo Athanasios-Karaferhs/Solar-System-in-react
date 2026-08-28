@@ -1,111 +1,214 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+.solar-system {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background: var(--bg);
+  color: var(--text);
+  box-sizing: border-box;
+  padding: 1.5rem;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  background: var(--accent-bg);
+  color: var(--text-h);
+  border: 1px solid var(--accent-border);
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.button:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.speed-label {
+  font-size: 13px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--text);
+}
+
+.speed-value {
+  min-width: 32px;
+}
+
+.canvas {
+  flex: 1;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.planet-group {
+  cursor: pointer;
+}
+
+.caption {
+  font-size: 12px;
+  color: var(--text);
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Info button (shown when a planet is selected) */
+
+.button_info {
+  color: var(--text-h);
+  border-radius: 8px;
+  padding: 4px 6px;
+  cursor: pointer;
+  font: 10px;
+  border: 1px solid var(--accent-border);
+  background: var(--accent-bg);
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.button_info:hover {
+  background: var(--accent);
+  color: var(--bg);
+  transform: translateY(-1px);
+}
+
+.button_info:active {
+  transform: translateY(0);
+}
+
+/* 3D detail view (spinning planet + info panel) */
+
+.detail-view {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg);
+}
+
+.detail-left {
+  width: 50%;
+  height: 100%;
+}
+
+.detail-right {
+  position: relative; /* anchors the Back button to this panel */
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem;
+  box-sizing: border-box;
+  background: var(--bg);
+  color: var(--text);
+  overflow-y: auto;
+  text-align: left;
+}
+
+.detail-right h1 {
+  margin: 0 0 16px;
+  text-align: left;
+}
+
+/* Back button pinned at the bottom of the info panel */
+.button_info-back {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: fit-content;
+  color: var(--text-h);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.button_info-back:hover {
+  background: var(--accent);
+  color: var(--bg);
+  transform: translateY(-1px);
+}
+
+/* Expandable / collapsible sections */
+
+.expandable {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.expandable-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: var(--accent-bg);
+  color: var(--text-h);
+  border: 1px solid var(--accent-border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+.expandable-toggle:hover {
+  background: var(--accent);
+  color: var(--bg);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+.arrow {
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.arrow-open {
+  transform: rotate(180deg);
+}
+
+.expandable-content {
+  padding: 12px 14px;
+  color: var(--text);
+  font-size: 14px;
+  text-align: left;
+}
+
+/*text for when text is showing up on more info */
+.text {
+  animation: slideInUp 1.8s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
 }
