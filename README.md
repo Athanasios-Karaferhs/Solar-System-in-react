@@ -1,16 +1,32 @@
-# React + Vite
+# Solar System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive 2D solar system simulation built with React — planets orbit the sun
+in real time based on their actual relative orbital periods, with a 3D detail view
+for exploring individual planets up close.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 8 planets orbiting the sun, animated with `requestAnimationFrame`
+- Orbital speeds scaled to real relative periods (Mercury moves fastest, Neptune slowest)
+- Play/pause and adjustable simulation speed
+- Click a planet to select it and see its name + orbital period
+- "Info" button opens a detail view: a spinning 3D model on one side, planet info on the other
+- Saturn rendered with rings
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React + Vite
+- `three` / `@react-three/fiber` for the 3D planet detail view
+- Plain SVG for the orbit visualization
+- Plain CSS (no framework)
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone <repo-url>
+cd solar-system
+npm install
+npm run dev
+```
+
+Visit 'localhost' using the linked generated on your terminal, or simiply by pressing O+Enter on your keyboard.
