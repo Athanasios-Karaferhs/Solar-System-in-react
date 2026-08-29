@@ -105,7 +105,7 @@ export default function SolarSystem() {
 
   // look up the full planet object for whatever name is currently selected
   const selectedPlanet = PLANETS.find((p) => p.name === selected) || null;
-
+  // περασμα στο detailview
   if (detailPlanet) {
     return (
       <EarthDetailView

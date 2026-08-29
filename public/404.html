@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lost in space — 404</title>
+  <style>
+    :root {
+      --text: #9ca3af;
+      --text-h: #f3f4f6;
+      --bg: #16171d;
+      --accent: #c084fc;
+      --accent-bg: rgba(192, 132, 252, 0.15);
+      --accent-border: rgba(192, 132, 252, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .stars {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 120px;
+      margin: 0;
+      color: var(--accent);
+      letter-spacing: -4px;
+    }
+
+    h2 {
+      font-size: 22px;
+      color: var(--text-h);
+      margin: 8px 0 4px;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 15px;
+      color: var(--text);
+      margin: 0 0 24px;
+    }
+
+    a {
+      color: var(--text-h);
+      text-decoration: none;
+      border: 1px solid var(--accent-border);
+      background: var(--accent-bg);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background 0.2s ease, transform 0.15s ease;
+      display: inline-block;
+    }
+
+    a:hover {
+      background: var(--accent);
+      color: var(--bg);
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <div class="content">
+    <h1>404</h1>
+    <h2>This planet doesn't exist</h2>
+    <p>You've drifted outside our solar system.</p>
+    <a href="/">Back to orbit</a>
+  </div>
+
+  <script>
+    const container = document.getElementById("stars");
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.opacity = 0.3 + Math.random() * 0.5;
+      container.appendChild(star);
+    }
+  </script>
+</body>
+</html>

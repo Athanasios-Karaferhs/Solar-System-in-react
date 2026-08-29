@@ -154,49 +154,6 @@
   transform: translateY(-1px);
 }
 
-/* Expandable / collapsible sections */
-
-.expandable {
-  width: 100%;
-  margin-top: 8px;
-}
-
-.expandable-toggle {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background: var(--accent-bg);
-  color: var(--text-h);
-  border: 1px solid var(--accent-border);
-  border-radius: 6px;
-  padding: 10px 14px;
-  cursor: pointer;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-.expandable-toggle:hover {
-  background: var(--accent);
-  color: var(--bg);
-}
-
-.arrow {
-  transition: transform 0.2s ease;
-  display: inline-block;
-}
-
-.arrow-open {
-  transform: rotate(180deg);
-}
-
-.expandable-content {
-  padding: 12px 14px;
-  color: var(--text);
-  font-size: 14px;
-  text-align: left;
-}
-
 /*text for when text is showing up on more info */
 .text {
   animation: slideInUp 1.8s ease-out;
@@ -249,7 +206,8 @@
 /*next-prev*/
 
 .nav-buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 16px;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: fit-content;
 }
