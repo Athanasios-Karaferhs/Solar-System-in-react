@@ -62,7 +62,14 @@ function CustomStars({ count = 2000 }) {
   );
 }
 
-export function EarthDetailView({ planetName = "Earth", onClose }) {
+export function EarthDetailView({
+  planetName = "Earth",
+  onClose,
+  onNext,
+  onPrev,
+  nextPlanetName,
+  prevPlanetName,
+}) {
   // Get info for the requested planet (Earth if not found)
   const info = PLANET_DATA[planetName] || PLANET_DATA.Earth;
 
@@ -107,8 +114,6 @@ export function EarthDetailView({ planetName = "Earth", onClose }) {
       </div>
       <div className="detail-right">
         <h1 className="text">{planetName}</h1>
-
-        {/*info about each plannet from the planets.json*/}
         <p className="text">{info.intro}</p>
 
         {info.sections.map((section) => (
@@ -117,6 +122,15 @@ export function EarthDetailView({ planetName = "Earth", onClose }) {
             <p className="text">{section.text}</p>
           </div>
         ))}
+
+        <div className="nav-buttons">
+          <button className="button" onClick={onPrev}>
+            ← {prevPlanetName}
+          </button>
+          <button className="button" onClick={onNext}>
+            {nextPlanetName} →
+          </button>
+        </div>
 
         <button
           className={`button_info button_info-${planetName?.toLowerCase()}`}

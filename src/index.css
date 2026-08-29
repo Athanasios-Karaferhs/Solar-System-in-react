@@ -245,3 +245,11 @@
     transform: rotate(360deg);
   }
 }
+
+/*next-prev*/
+
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}

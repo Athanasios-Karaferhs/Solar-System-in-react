@@ -52,8 +52,28 @@ export default function SolarSystem() {
   );
   const [detailPlanet, setDetailPlanet] = useState(null); // e.g. "Earth" or null
 
+  const names = PLANETS.map((p) => p.name);
+  const currentIndex = names.indexOf(detailPlanet);
+  const nextPlanetName = names[(currentIndex + 1) % names.length];
+  const prevPlanetName =
+    names[(currentIndex - 1 + names.length) % names.length];
+
   function handle_open_planet(selectedPlanetName) {
     setDetailPlanet(selectedPlanetName);
+  }
+
+  function handleNextPlanet() {
+    const names = PLANETS.map((p) => p.name);
+    const currentIndex = names.indexOf(detailPlanet);
+    const nextIndex = (currentIndex + 1) % names.length; // wraps to 0 after the last planet
+    setDetailPlanet(names[nextIndex]);
+  }
+
+  function handlePrevPlanet() {
+    const names = PLANETS.map((p) => p.name);
+    const currentIndex = names.indexOf(detailPlanet);
+    const prevIndex = (currentIndex - 1 + names.length) % names.length; // wraps to the end from the first planet
+    setDetailPlanet(names[prevIndex]);
   }
 
   const rafRef = useRef(null);
@@ -91,6 +111,10 @@ export default function SolarSystem() {
       <EarthDetailView
         planetName={detailPlanet}
         onClose={() => setDetailPlanet(null)}
+        onNext={handleNextPlanet}
+        onPrev={handlePrevPlanet}
+        nextPlanetName={nextPlanetName}
+        prevPlanetName={prevPlanetName}
       />
     );
   }
